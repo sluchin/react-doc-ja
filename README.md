@@ -1,6 +1,6 @@
 # react-doc-ja
 
-React の日本語のドキュメント (https://ja.react.dev/) を表示するアプリです。ドキュメントは**日本語のサイトにあるので、翻訳しません** (翻訳のサービスも、API キーも要りません)。PC (Linux, Windows, macOS) と Android で動きます。
+React の日本語のドキュメント (<https://ja.react.dev/>) を表示するアプリです。ドキュメントは**日本語のサイトにあるので、翻訳しません** (翻訳のサービスも、API キーも要りません)。PC (Linux, Windows, macOS) と Android で動きます。
 
 - **Tauri 2** (Rust) + **React** (TypeScript)。
 - 英語の `react.dev` ではなく、日本語の `ja.react.dev` を開きます。日本語に訳されていないページは、サイトの側で英語のまま出ます。
@@ -47,7 +47,7 @@ docker compose run --rm build-android    # Android のデバッグ版 APK
 ```
 
 - Android の APK: `src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk` (arm64)。
-- Windows と macOS はそれぞれの OS で `npm ci && npx tauri build` を実行します (Rust, Node.js, 各 OS の Tauri の前提が要ります。https://tauri.app/start/prerequisites/)。
+- Windows と macOS はそれぞれの OS で `npm ci && npx tauri build` を実行します (Rust, Node.js, 各 OS の Tauri の前提が要ります。<https://tauri.app/start/prerequisites/)。>
 - 画面の確認 (`npm run tauri:dev`) はホストで行います。
 
 ## リリース
