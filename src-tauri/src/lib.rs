@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//! React の日本語のドキュメント (ja.react.dev) を表示するアプリ (日本語なので, 翻訳しない). 中身は, 共通のコード (shared).
+//! React の日本語のドキュメント (ja.react.dev) を表示するアプリ (日本語なので翻訳しない). 中身は, 共通のコード (shared).
 
 use doc_translator_core::Site;
 

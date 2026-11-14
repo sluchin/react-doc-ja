@@ -3,30 +3,30 @@
 React の日本語のドキュメント (https://ja.react.dev/) を表示するアプリです。ドキュメントは**日本語のサイトにあるので、翻訳しません** (翻訳のサービスも、API キーも要りません)。PC (Linux, Windows, macOS) と Android で動きます。
 
 - **Tauri 2** (Rust) + **React** (TypeScript)。
-- 英語の `react.dev` ではなく、日本語の `ja.react.dev` を開きます。日本語に訳されていないページは、サイトの側で、英語のまま出ます。
+- 英語の `react.dev` ではなく、日本語の `ja.react.dev` を開きます。日本語に訳されていないページは、サイトの側で英語のまま出ます。
 
 ## 仕組み
 
 ```text
 リンクを開く ─> Rust: ドキュメントのページを取得 (ja.react.dev と react.dev だけ)
             ─> React: 本文を取り出し (リンクと画像は絶対 URL に)
-            ─> React: そのまま表示 (リンクは、アプリの中で開く)
+            ─> React: そのまま表示 (リンクは, アプリの中で開く)
 ```
 
-- 表示する HTML は、必ず `DOMPurify` を通します (スクリプトなどを除きます)。
+- 表示する HTML は、必ず `DOMPurify` に通して、スクリプトなどを除きます。
 - アプリの中で開くのは `https://ja.react.dev/` と `https://react.dev/` のページだけです。ほかのリンクはブラウザで開きます。最初のページは `/learn` です。
 
 ## 使い方
 
 1. アプリを起動します。トップ (`/learn`) が開きます。リンクを押すと、そのページを取得して表示します。
-2. 「英語のサイトへ」で、今のページを、英語のサイト (`react.dev`) の同じページに切り替えます (ページごと。英語のページは、翻訳しません。「日本語のサイトへ」で戻ります)。
-3. 左上の ☰ で**メニュー (ナビゲーションドロワー)** を開きます。メニュー (目次) はページの左のメニューから読みます。項目を押すと、そのページを開いて、閉じます。
-4. **読んだ場所**: 右端にスクロールバーを出します。つまみを押して動かすと、つまみの横に今のページの、読み進めた場所 / ページ全体 (「3 / 12 画面 (25%)」) が出ます。最後に開いたページと、ページごとの読んだ位置を端末に覚えて、次の起動で戻します。
+2. 「英語のサイトへ」で、今のページを英語のサイト (`react.dev`) の同じページに切り替えます。切り替えはページごとで、英語のページは翻訳しません。「日本語のサイトへ」で戻ります。
+3. 左上の ☰ で**メニュー (ナビゲーションドロワー)** を開きます。メニュー (目次) はページの左のメニューから読みます。項目を押すと、そのページを開いてメニューを閉じます。
+4. **読んだ場所**: 右端にスクロールバーを出します。つまみを押して動かすと、今のページの読み進めた場所とページ全体 (「3 / 12 画面 (25%)」) が、つまみの横に出ます。最後に開いたページと、ページごとの読んだ位置を端末に覚えておき、次の起動で戻します。
 5. **トップとしおり**: ツールバーの ⌂ でトップのページに戻ります。☆ で今のページにしおりを付けて、メニューの「しおり」から開きます (外すのは ✕)。
 
 ## 共通のコード (サブモジュール)
 
-画面、HTML の取り出し、翻訳、取得、キャッシュ、ML Kit のプラグインは**共通のリポジトリ** [doc-translator-core](https://github.com/sluchin/doc-translator-core) にあります (サブモジュール `shared/`)。このリポジトリには React だけの設定 (`src/site.ts` と `src-tauri/src/lib.rs` の `SITE`) と、アイコンと、アプリの設定だけがあります。姉妹アプリは [zephyr-doc-trans](https://github.com/sluchin/zephyr-doc-trans) (Zephyr)、[kotlin-doc-trans](https://github.com/sluchin/kotlin-doc-trans) (Kotlin)、[typescript-doc-trans](https://github.com/sluchin/typescript-doc-trans) (TypeScript) です。このアプリは、共通のコードを使いますが、翻訳しません (`SiteProfile` の `japanese`)。
+画面、HTML の取り出し、翻訳、取得、キャッシュ、ML Kit のプラグインは**共通のリポジトリ** [doc-translator-core](https://github.com/sluchin/doc-translator-core) にあります (サブモジュール `shared/`)。このリポジトリには React だけの設定 (`src/site.ts` と `src-tauri/src/lib.rs` の `SITE`) と、アイコンと、アプリの設定だけがあります。姉妹アプリは [zephyr-doc-trans](https://github.com/sluchin/zephyr-doc-trans) (Zephyr)、[kotlin-doc-trans](https://github.com/sluchin/kotlin-doc-trans) (Kotlin)、[typescript-doc-trans](https://github.com/sluchin/typescript-doc-trans) (TypeScript) です。このアプリは共通のコードを使いますが、翻訳はしません (`SiteProfile` の `japanese`)。
 
 ```bash
 git clone --recurse-submodules git@github.com:sluchin/react-doc-ja.git   # 取り込み済みなら: git submodule update --init
@@ -56,4 +56,4 @@ docker compose run --rm build-android    # Android のデバッグ版 APK
 
 ## ライセンス
 
-GPL-3.0-or-later。React のドキュメントは Meta のものです (利用条件はサイトで確認してください)。このリポジトリにはドキュメントの文章を含めません (実行のときに、取得します)。
+GPL-3.0-or-later。React のドキュメントは Meta のものです (利用条件はサイトで確認してください)。このリポジトリにはドキュメントの文章を含めません (実行のときに取得します)。
